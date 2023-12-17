@@ -1,7 +1,7 @@
 const path = require('path');
 // webpackbar 是webpack的一个插件，用于在命令行界面中展示webpack构建进度条和详细信息
 const WebpackBar = require('webpackbar');
-// 
+// 填充html文件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -56,11 +56,13 @@ const getCssLoaders = () => {
 };
 
 const getCustomLoaders = () => {
+  // style-loader 一般用于开发环境，将样式通过<style>标签插入到HTML页面中的webpack loader
   const cssLoaders = [
     isDevelopment
       ? 'style-loader'
       : { loader: MiniCssExtractPlugin.loader, options: { publicPath: '../' } },
     {
+    // css-loader 用于解析css文件，而style-loader 将解析后的css代码以<style>标签的形式插入到html页面中。  
       loader: 'css-loader',
       options: {
         sourceMap: isDevelopment
@@ -149,6 +151,7 @@ module.exports = {
           from: 'assets/*',
           to: path.resolve(ROOT_PATH, './build'),
           toType: 'dir',
+          // 设置忽略的文件
           globOptions: {
             dot: true,
             gitignore: true,

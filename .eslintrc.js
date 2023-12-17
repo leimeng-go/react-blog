@@ -1,5 +1,7 @@
 module.exports = {
+  // ESLint 的根配置文件
   root: true,
+  // 使用AlloyTeam 提供的ESLint 规则配置
   extends: ['alloy', 'alloy/react', 'alloy/typescript'],
   parserOptions: {
     warnOnUnsupportedTypeScriptVersion: false
