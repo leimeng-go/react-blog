@@ -4,10 +4,12 @@ const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
 const { ROOT_PATH, SERVER_HOST, SERVER_PORT } = require('../constant');
 
+//merge 使用webpack-merge 通过merge函数，将多个配置对象传递给它，返回一个合并后的配置对象
 module.exports = merge(common, {
   target: 'web', // 解决热更新失效
   mode: 'development',
   devtool: 'eval-cheap-module-source-map',
+  // output属性告诉webpack在哪里输出它所创建的bundle,以及如何命名这些文件
   output: {
     path: path.resolve(ROOT_PATH, './build'),
     filename: 'js/[name].js'

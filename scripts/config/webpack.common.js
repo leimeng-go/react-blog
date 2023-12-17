@@ -1,5 +1,7 @@
 const path = require('path');
+// webpackbar 是webpack的一个插件，用于在命令行界面中展示webpack构建进度条和详细信息
 const WebpackBar = require('webpackbar');
+// 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -115,6 +117,7 @@ const getAntdLessLoaders = () => [
 ];
 
 module.exports = {
+  //入口起点
   entry: {
     index: path.resolve(ROOT_PATH, './src/index')
   },
@@ -122,9 +125,13 @@ module.exports = {
   plugins: [
     // html模板
     new HtmlWebpackPlugin({
+      // 指定一个自定义的HTML模版文件，html-webpack-plugin 会根据这个模版生成HTML文件
       template: path.resolve(ROOT_PATH, './public/index.html'),
+      // 指定生成HTML文件的名称
       filename: 'index.html',
-      inject: 'body'
+      //控制将打包生成的js和css文件注入到HTML文件的位置
+      inject: 'body',
+      title: "我的小站"
     }),
     // 打包显示进度条
     new WebpackBar(),
