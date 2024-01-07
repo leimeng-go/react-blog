@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className={s.footer}>
+    <footer className={s.footer}> 
       <span>
         个人博客系统
         <a href={source_github} target='_blank' rel='noreferrer' className={s.text}>
@@ -37,6 +37,6 @@ const Footer: React.FC = () => {
       </span>
     </footer>
   );
-};
+}; 
 
 export default Footer;

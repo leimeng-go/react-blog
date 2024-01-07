@@ -5,6 +5,8 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 
 import s from './index.scss';
 
+//使用lazy函数，组件 
+
 const Home = lazy(() => import(/* webpackPrefetch:true */ '@/pages/Home'));
 const Articles = lazy(() => import(/* webpackPrefetch:true */ '@/pages/Articles'));
 const Classes = lazy(() => import(/* webpackPrefetch:true */ '@/pages/Classes'));
@@ -19,7 +21,7 @@ const Post = lazy(() => import(/* webpackPrefetch:true */ '@/pages/Post'));
 const ArtDetail = lazy(() => import(/* webpackPrefetch:true */ '@/pages/ArtDetail'));
 
 const Main: React.FC = () => {
-  return (
+  return ( 
     <main className={s.main}>
       <div className={s.center}>
         <ErrorBoundary>
