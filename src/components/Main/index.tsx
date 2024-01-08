@@ -1,11 +1,14 @@
 import React, { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+// 导入一个错误边界组件，用于捕获其子组件b
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 import s from './index.scss';
 
-//使用lazy函数，组件 
+// Suspense 组件允许组件等待某些操作完成，显示一个回退内容（在这里为空标签<></>）
+// 使用lazy函数，组件被动态导入，这意味着他们将作为单独的chunk被加载，仅在需要时才加载这些代码。
+// webpackPrefetch: true 是一个Webpack魔法注释，指示Webpack在空闲时间预取这个chunk,以加快后续导航的速度
 
 const Home = lazy(() => import(/* webpackPrefetch:true */ '@/pages/Home'));
 const Articles = lazy(() => import(/* webpackPrefetch:true */ '@/pages/Articles'));
@@ -24,7 +27,7 @@ const Main: React.FC = () => {
   return ( 
     <main className={s.main}>
       <div className={s.center}>
-        <ErrorBoundary>
+        <ErrorBoundary>  
           <Suspense fallback={<></>}>
             <Routes>
               <Route path='/' element={<Home />} />
